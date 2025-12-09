@@ -1,21 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Driver : MonoBehaviour
 {
     [SerializeField] float rotateSpeed = 0.5f;
     [SerializeField] float moveSpeed = 0.05f;
-    // Start is called before the first frame update
     void Start()
     {
      
     }
 
-    // Update is called once per frame
     void Update()
     {
+
+        if(Keyboard.current.leftArrowKey.isPressed)
+        {
+            RotateLeft();
+        }
+
         transform.Rotate(0,0,rotateSpeed);
         transform.Translate(0,moveSpeed,0);
+    }
+
+    void RotateLeft()
+    {
+        transform.Rotate(0, 0, -rotateSpeed);
     }
 }

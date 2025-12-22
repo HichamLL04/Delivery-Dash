@@ -33,8 +33,11 @@ public class Driver : MonoBehaviour
             movLateral = -1f;
         }
         
-        transform.Translate(0,moveSpeed * movFrontal,0);
-        transform.Rotate(0,0,rotateSpeed * movLateral);
+        float moveAmount = moveSpeed * movFrontal * Time.deltaTime;
+        float rotateAmount = rotateSpeed * movLateral * Time.deltaTime;
+
+        transform.Translate(0,moveAmount,0);
+        transform.Rotate(0,0,rotateAmount);
         
     }
 

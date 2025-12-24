@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Paquete
   - Cliente
+  - Boost
+  - Pared
+  - Cliente1
+  - Cliente2
+  - Cliente3
+  - Cliente4
   layers:
   - Default
   - TransparentFX

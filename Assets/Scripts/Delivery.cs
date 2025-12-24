@@ -3,19 +3,24 @@ using UnityEngine;
 public class Delivery : MonoBehaviour
 {
 
+
     bool hasPackage = false;
-    void OnTriggerEnter2D(Collider2D other)
+    [SerializeField] float time = 0.5f;
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        // Ahora se usa "other" no "collision" a diferencia del video
-        if (other.CompareTag("Paquete") && !hasPackage)
+        if (collision.CompareTag("Paquete") && !hasPackage)
         {
-            Debug.Log("Paquete " + other.gameObject.name + " recogido.");
+            Debug.Log("Paquete " + collision.gameObject.name + " recogido.");
             hasPackage = true;
+            GetComponent<ParticleSystem>().Play();
+            Destroy(collision.gameObject, time);
         }
 
-        if (other.CompareTag("Cliente") && hasPackage)
+        if (collision.CompareTag("Cliente") && hasPackage)
         {
-            Debug.Log("Cliente " + other.gameObject.name + " ha recibido el paquete.");
+            Debug.Log("Cliente " + collision.gameObject.name + " ha recibido el paquete.");
+            GetComponent<ParticleSystem>().Stop();
+
             hasPackage = false;
         }
     }
